@@ -26,7 +26,7 @@ Mining → Reactions → PI → Components → Invention → T2/T3 → Market �
 
 ### Option 1: Windows Installer (Recommended for Windows 10/11)
 
-1. Download `I-EVE-TITS-Setup.exe` from [Releases](https://github.com/yourusername/i-eve-tits/releases)
+1. Download `I-EVE-TITS-Setup.exe` from [Releases](https://github.com/administrator-beep/i-eve-tits/releases)
 2. Run installer (requires Administrator)
 3. Installer validates Docker, generates encryption keys, creates Start Menu shortcuts
 4. Create `.env` file with EVE API credentials (see [Configuration](#configuration))
@@ -46,7 +46,7 @@ See [SETUP_WINDOWS.md](SETUP_WINDOWS.md) for detailed walkthrough with screensho
 **Steps:**
 
 ```bash
-git clone https://github.com/yourusername/i-eve-tits
+git clone https://github.com/administrator-beep/i-eve-tits
 cd i-eve-tits
 ```
 
@@ -254,7 +254,7 @@ Every release includes:
 - ✅ Auto-update checker (`check-update.ps1`)
 - ✅ Batch deployment script (`deploy-batch.ps1`)
 
-Check **[Releases](https://github.com/yourusername/i-eve-tits/releases)** for latest version.
+Check **[Releases](https://github.com/administrator-beep/i-eve-tits/releases)** for latest version.
 
 ---
 
@@ -272,8 +272,8 @@ MIT License. See [LICENSE](LICENSE).
 
 ## Support
 
-- **Issues & Bug Reports**: [GitHub Issues](https://github.com/yourusername/i-eve-tits/issues)
-- **Questions & Discussions**: [GitHub Discussions](https://github.com/yourusername/i-eve-tits/discussions)
+- **Issues & Bug Reports**: [GitHub Issues](https://github.com/administrator-beep/i-eve-tits/issues)
+- **Questions & Discussions**: [GitHub Discussions](https://github.com/administrator-beep/i-eve-tits/discussions)
 - **Setup Help**: See [SETUP_WINDOWS.md](SETUP_WINDOWS.md) and [ENTERPRISE_DEPLOYMENT.md](ENTERPRISE_DEPLOYMENT.md)
 - **Development**: See [CONTRIBUTING.md](CONTRIBUTING.md)
 

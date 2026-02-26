@@ -30,7 +30,7 @@ if (-not (Test-Path $versionFile)) {
 Write-Host "Checking for updates from GitHub..." -ForegroundColor Yellow
 
 # Get latest release info from GitHub API
-$apiUrl = "https://api.github.com/repos/yourusername/i-eve-tits/releases/latest"
+$apiUrl = "https://api.github.com/repos/administrator-beep/i-eve-tits/releases/latest"
 $headers = @{ "User-Agent" = "I-EVE-TITS-Updater" }
 
 try {

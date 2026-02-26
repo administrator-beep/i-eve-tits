@@ -181,7 +181,7 @@
   git push origin v1.2.0
   ```
   - GitHub Actions job `Build Installer` should start automatically
-  - Monitor: https://github.com/yourusername/i-eve-tits/actions
+  - Monitor: https://github.com/administrator-beep/i-eve-tits/actions
 
 - [ ] **GitHub Actions Workflow Completes**:
   - [ ] Build step: Inno Setup compiles installer ✓
@@ -192,7 +192,7 @@
   - If fails: Check build logs, fix issue, retag (delete old tag: `git tag -d v1.2.0`)
 
 - [ ] **GitHub Release Verified**:
-  - Navigate to: https://github.com/yourusername/i-eve-tits/releases
+  - Navigate to: https://github.com/administrator-beep/i-eve-tits/releases
   - Confirm:
     - [ ] Release title correct: "I-EVE-TITS 1.2.0"
     - [ ] Release notes include features, fixes, system requirements
@@ -207,8 +207,8 @@
     🚀 **I-EVE-TITS 1.2.0 Released!**
     
     Features: Asset pagination, token security hardening
-    Download: https://github.com/yourusername/i-eve-tits/releases/tag/v1.2.0
-    Setup guide: https://github.com/yourusername/i-eve-tits#installation
+    Download: https://github.com/administrator-beep/i-eve-tits/releases/tag/v1.2.0
+    Setup guide: https://github.com/administrator-beep/i-eve-tits#installation
     ```
   - GitHub Discussions: Post in "Releases" category (if enabled)
   - EVE Online forums: If applicable (Industry channel)
@@ -319,9 +319,9 @@ Release Notes: [Link to GitHub release]
 
 ## Links & Resources
 
-- GitHub Releases: https://github.com/yourusername/i-eve-tits/releases
-- GitHub Actions: https://github.com/yourusername/i-eve-tits/actions
-- Docker Hub: https://hub.docker.com/r/yourusername/i-eve-tits (if published)
+- GitHub Releases: https://github.com/administrator-beep/i-eve-tits/releases
+- GitHub Actions: https://github.com/administrator-beep/i-eve-tits/actions
+- Docker Hub: https://hub.docker.com/r/administrator-beep/i-eve-tits (if published)
 - Installation Guide: [SETUP_WINDOWS.md](SETUP_WINDOWS.md)
 - Deployment Guide: [ENTERPRISE_DEPLOYMENT.md](ENTERPRISE_DEPLOYMENT.md)
 

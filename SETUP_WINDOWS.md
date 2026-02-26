@@ -50,7 +50,7 @@ Keep these in a safe location (notepad temporarily).
 cd $env:USERPROFILE\Documents
 
 # Clone the repository
-git clone https://github.com/yourusername/i-eve-tits.git
+git clone https://github.com/administrator-beep/i-eve-tits.git
 cd i-eve-tits
 ```
 

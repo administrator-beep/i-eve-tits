@@ -225,7 +225,7 @@ Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
 **Solution**:
 1. Check internet connection
 2. Verify GitHub URL in script is correct
-3. Try manual clone: `git clone https://github.com/yourusername/i-eve-tits`
+3. Try manual clone: `git clone https://github.com/administrator-beep/i-eve-tits/`
 
 ---
 
@@ -330,7 +330,7 @@ I-EVE-TITS-Setup.exe /D=C:\ProgramData\I-EVE-TITS /SILENT
 - **Installation issues**: See `SETUP_WINDOWS.md`
 - **Configuration help**: See `README.md`
 - **API documentation**: See `API_REFERENCE.md`
-- **GitHub Issues**: https://github.com/yourusername/i-eve-tits/issues
+- **GitHub Issues**: https://github.com/administrator-beep/i-eve-tits/issues
 
 ---
 

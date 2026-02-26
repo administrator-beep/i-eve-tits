@@ -7,9 +7,9 @@
 AppName=I-EVE-TITS
 AppVersion=1.0.0
 AppPublisher=I-EVE-TITS Contributors
-AppPublisherURL=https://github.com/yourusername/i-eve-tits
-AppSupportURL=https://github.com/yourusername/i-eve-tits/issues
-AppUpdatesURL=https://github.com/yourusername/i-eve-tits
+AppPublisherURL=https://github.com/administrator-beep/i-eve-tits
+AppSupportURL=https://github.com/administrator-beep/i-eve-tits/issues
+AppUpdatesURL=https://github.com/administrator-beep/i-eve-tits
 DefaultDirName={localappdata}\I-EVE-TITS
 DefaultGroupName=I-EVE-TITS
 OutputBaseFilename=I-EVE-TITS-Setup

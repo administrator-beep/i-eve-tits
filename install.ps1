@@ -83,16 +83,16 @@ if (Test-Path $repoPath) {
     Write-Success " DONE"
 } else {
     Write-Host "  Cloning repository..." -NoNewline
-    git clone https://github.com/yourusername/i-eve-tits $repoPath 2>$null
+    git clone https://github.com/administrator-beep/i-eve-tits $repoPath 2>$null
     if ($LASTEXITCODE -eq 0) {
         Write-Success " DONE"
     } else {
         Write-Error " FAILED"
         Write-Host "  Could not clone repository. Please check your internet connection."
-        Write-Host "  Repository URL: https://github.com/yourusername/i-eve-tits"
+        Write-Host "  Repository URL: https://github.com/administrator-beep/i-eve-tits"
         exit 1
     }
-}
+} 
 
 # Generate encryption key
 Write-Host ""

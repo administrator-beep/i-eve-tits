@@ -134,5 +134,5 @@ docker-compose logs -f
 ---
 
 **Questions or issues?** 
-- GitHub Issues: https://github.com/yourusername/i-eve-tits/issues
+- GitHub Issues: https://github.com/administrator-beep/i-eve-tits/issues
 - Read full docs: [INSTALLER_GUIDE.md](INSTALLER_GUIDE.md)
