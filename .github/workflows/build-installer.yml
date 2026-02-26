@@ -1,0 +1,132 @@
+name: Build Installer
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'  # Trigger on version tags like v1.0.0
+
+jobs:
+  build-windows-installer:
+    runs-on: windows-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Inno Setup
+        uses: jrsoftware/ispack-action@v1.0
+      
+      - name: Get version from tag
+        id: version
+        run: |
+          $tag = "${{ github.ref }}" -replace 'refs/tags/v', ''
+          echo "version=$tag" >> $env:GITHUB_OUTPUT
+          Write-Host "Building version: $tag"
+      
+      - name: Update version.txt
+        run: |
+          $version = "${{ steps.version.outputs.version }}"
+          $timestamp = (Get-Date).ToUniversalTime().ToString('O')
+          $content = @"
+VERSION=$version
+BUILD_DATE=$(Get-Date -Format 'yyyy-MM-dd')
+BUILD_TIMESTAMP=$timestamp
+RELEASE_URL=https://github.com/${{ github.repository }}/releases
+LATEST_RELEASE_API=https://api.github.com/repos/${{ github.repository }}/releases/latest
+"@
+          Set-Content -Path "version.txt" -Value $content
+      
+      - name: Build installer with Inno Setup
+        run: |
+          & 'C:\Program Files (x86)\Inno Setup 6\iscc.exe' setup.iss
+            
+      - name: Verify build output
+        run: |
+          if (-not (Test-Path "dist\I-EVE-TITS-Setup.exe")) {
+            Write-Error "Installer build failed"
+            exit 1
+          }
+          $size = (Get-Item "dist\I-EVE-TITS-Setup.exe").Length / 1MB
+          Write-Host "✓ Build successful - Size: $([Math]::Round($size, 2)) MB"
+      
+      - name: Calculate checksums
+        id: checksums
+        run: |
+          $sha256 = (Get-FileHash -Path "dist\I-EVE-TITS-Setup.exe" -Algorithm SHA256).Hash
+          $md5 = (Get-FileHash -Path "dist\I-EVE-TITS-Setup.exe" -Algorithm MD5).Hash
+          
+          echo "sha256=$sha256" >> $env:GITHUB_OUTPUT
+          echo "md5=$md5" >> $env:GITHUB_OUTPUT
+          
+          Write-Host "SHA256: $sha256"
+          Write-Host "MD5: $md5"
+          
+          # Create checksums file
+          @"
+I-EVE-TITS-Setup.exe
+SHA256: $sha256
+MD5: $md5
+"@ | Out-File -FilePath "dist\CHECKSUMS.txt"
+      
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: I-EVE-TITS ${{ steps.version.outputs.version }}
+          body: |
+            ## I-EVE-TITS Release ${{ steps.version.outputs.version }}
+            
+            ### Installation
+            - **Windows**: Download `I-EVE-TITS-Setup.exe` and run
+            - **Checksum (SHA256)**: `${{ steps.checksums.outputs.sha256 }}`
+            
+            ### What's New
+            See commit history for detailed changes.
+            
+            ### System Requirements
+            - Windows 10/11
+            - Docker Desktop
+            - 4GB RAM (8GB recommended)
+            - 100MB free space (+ 500MB for SDE data)
+            
+            ### Quick Start
+            1. Download `I-EVE-TITS-Setup.exe`
+            2. Run installer (Administrator required)
+            3. Follow the wizard
+            4. Configure `.env` with EVE API credentials
+            5. Click "Start I-EVE-TITS" from Start Menu
+            6. Open http://localhost:3000
+            
+            ### Support
+            - Issues: https://github.com/${{ github.repository }}/issues
+            - Docs: See README.md
+          draft: false
+          prerelease: false
+      
+      - name: Upload installer
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./dist/I-EVE-TITS-Setup.exe
+          asset_name: I-EVE-TITS-Setup.exe
+          asset_content_type: application/octet-stream
+      
+      - name: Upload checksums
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./dist/CHECKSUMS.txt
+          asset_name: CHECKSUMS.txt
+          asset_content_type: text/plain
+      
+      - name: Notify result
+        run: |
+          Write-Host "✓ Release created successfully!"
+          Write-Host "Release: https://github.com/${{ github.repository }}/releases/tag/${{ github.ref }}"

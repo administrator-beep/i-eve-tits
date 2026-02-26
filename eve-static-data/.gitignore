@@ -1,0 +1,6 @@
+# Ignore EVE static data files (SDE) which are too large for GitHub
+*.jsonl
+*.json
+
+# Keep the README so the directory stays in the repo
+!README.md
